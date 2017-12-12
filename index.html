@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en-us">
+	<head>
+		<meta charset="UTF-8">
+	
+		<title> Train Scheduler</title>
+
+		<!-- Stylesheets -->
+		<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+		<!-- Firebase -->
+		<script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-auth.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-database.js"></script>
+		<script>
+			// Initialize Firebase
+			var config = {
+				apiKey: "AIzaSyCr5O_t6pJtpvgXzFtHdTmoPcRKatLQjT0",
+				authDomain: "train-activity-393c0.firebaseapp.com",
+				databaseURL: "https://train-activity-393c0.firebaseio.com",
+				projectId: "train-activity-393c0",
+				storageBucket: "",
+				messagingSenderId: "210918617907"
+			};
+			firebase.initializeApp(config);
+		</script>
+
+		<!-- jquery & our scripts -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	 	<script src="assets/javascript/train.js"></script>
+	</head>
+	
+	<body>
+		<h1>TEST</h1>
+		<div id="header"> All Aboard! 
+
+		</div> <!-- header -->
+	 
+	 	<div id="table">
+
+	 	</div>. <!-- header -->
+
+	 	<div id= "submit">
+			<input id="train-name"> Train Name
+
+			</input>
+
+			<input id="destination"> Destination
+			</input>
+
+			<input id="first-train-time">   First train time - (HH:mm - Military time)"
+			</input>
+
+			<input id="frequency"> Frequency (min)
+			</input>
+
+			<submit></submit>
+	 	</div> <!-- submit -->
+
+		<footer id="footer">  &copy; Copyright 2017 Nathan L. Worford
+		</footer>
+	</body>
+	
+</html>
