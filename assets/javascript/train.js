@@ -7,6 +7,17 @@ $(document).ready(function(){
 	//firebase.auth()
 	//firebase.database()
 	console.log(firebase);	
+	var usersRef = firebase.database().ref('users');
+	userRef.set ({
+		John: {
+			number: 1,
+			age: 30
+		},		
+		Amanda: {
+			number: 2,
+			age: 20
+		}
+	});
 
 
 
