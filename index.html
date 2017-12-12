@@ -17,6 +17,10 @@
 		<script>
 			// Initialize Firebase
 			/*
+			//need to set these rules for the "auth" part
+			// (multiple parts include auth & database separately)
+			//not sure if rules goes in config or if it's a firebase.auth() call
+			//or maybe set at firebase's website?
 			{
 				"rules": {
 					".read": true,
@@ -31,12 +35,7 @@
 				databaseURL: "https://train-activity-393c0.firebaseio.com",
 				projectId: "train-activity-393c0",
 				storageBucket: "",
-				messagingSenderId: "210918617907",
-				"rules": {
-					".read": true,
-					".write": true
-				}
-
+				messagingSenderId: "210918617907"
 			};
 			firebase.initializeApp(config);
 		</script>
