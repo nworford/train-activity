@@ -8,7 +8,7 @@ $(document).ready(function(){
 	//firebase.database()
 	console.log(firebase);	
 	var usersRef = firebase.database().ref('users');
-	userRef.set ({
+	usersRef.set ({
 		John: {
 			number: 1,
 			age: 30
