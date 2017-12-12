@@ -16,13 +16,27 @@
 		<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-database.js"></script>
 		<script>
 			// Initialize Firebase
+			/*
+			{
+				"rules": {
+					".read": true,
+					".write": true
+				}
+			}
+			*/
+
 			var config = {
 				apiKey: "AIzaSyCr5O_t6pJtpvgXzFtHdTmoPcRKatLQjT0",
 				authDomain: "train-activity-393c0.firebaseapp.com",
 				databaseURL: "https://train-activity-393c0.firebaseio.com",
 				projectId: "train-activity-393c0",
 				storageBucket: "",
-				messagingSenderId: "210918617907"
+				messagingSenderId: "210918617907",
+				"rules": {
+					".read": true,
+					".write": true
+				}
+
 			};
 			firebase.initializeApp(config);
 		</script>

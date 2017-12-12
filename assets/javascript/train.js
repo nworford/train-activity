@@ -3,6 +3,9 @@
 
 console.log("LOADING...");
 $(document).ready(function(){
+
+
+
 	console.log("DONE LOADING!");
 	//firebase.auth()
 	//firebase.database()
