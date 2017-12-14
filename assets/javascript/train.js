@@ -22,6 +22,18 @@ $(document).ready(function(){
 		}
 	});
 
+	var usersRef2 = firebase.database().ref('users2');
+	usersRef2.set ({
+		John: {
+			number: 1,
+			age: 30
+		},		
+		Amanda: {
+			number: 2,
+			age: 20
+		}
+	});
+
 	var fruitRef = firebase.database().ref('fruits');
 	fruitRef.set ({
 		0: {
@@ -47,7 +59,7 @@ $(document).ready(function(){
 	});
 
 
-	console.log("PROGRAM COMPLETE");
+	console.log("Version 5");
 });
 
 
