@@ -4,11 +4,10 @@
 console.log("LOADING...");
 $(document).ready(function(){
 
-
-
 	console.log("DONE LOADING!");
 	//firebase.auth()
 	//firebase.database()
+	/*
 	console.log(firebase);	
 	var usersRef = firebase.database().ref('users');
 	usersRef.set ({
@@ -45,6 +44,7 @@ $(document).ready(function(){
 			age: 20
 		}
 	});
+	*/
 
 	var trainsRef = firebase.database().ref('trains');
 	trainsRef.set ({
@@ -59,6 +59,12 @@ $(document).ready(function(){
 		}
 	});
 
+	var trentonRef = firebase.database().ref("trains/Trenton");
+	trentonRef.update ({
+	   "frequency": 92.7
+	});
+
+	
 
 	console.log("Version 5");
 });
