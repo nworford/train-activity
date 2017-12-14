@@ -64,9 +64,16 @@ $(document).ready(function(){
 	   "frequency": 92.7
 	});
 
+
+	trainsRef.push ({
+	   name: "Midnight Carriage",
+	   destination: "Philadelphia",
+	   frequency: 15,
+	   first: 1735
+	});
 	
 
-	console.log("Version 5");
+	console.log("Version 6");
 });
 
 
