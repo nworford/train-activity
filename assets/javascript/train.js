@@ -22,6 +22,17 @@ $(document).ready(function(){
 		}
 	});
 
+	var usersRef = firebase.database().ref('trains');
+	usersRef.set ({
+		Trenton: {
+			number: 1,
+			frequency: 25
+		},		
+		Oregon: {
+			number: 2,
+			frequency: 3600
+		}
+	});
 
 
 	console.log("PROGRAM COMPLETE");
