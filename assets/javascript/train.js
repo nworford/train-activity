@@ -24,7 +24,7 @@ $(document).ready(function(){
 
 	var usersRef = firebase.database().ref('trains');
 	usersRef.set ({
-		Trenton: {
+		Trenton Express: {
 			number: 1,
 			frequency: 25
 		},		
