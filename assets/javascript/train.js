@@ -22,8 +22,20 @@ $(document).ready(function(){
 		}
 	});
 
-	var usersRef = firebase.database().ref('trains');
-	usersRef.set ({
+	var fruitRef = firebase.database().ref('fruits');
+	fruitRef.set ({
+		0: {
+			number: 1,
+			age: 30
+		},		
+		1: {
+			number: 2,
+			age: 20
+		}
+	});
+
+	var trainsRef = firebase.database().ref('trains');
+	trainsRef.set ({
 		Trenton Express: {
 			number: 1,
 			frequency: 25
