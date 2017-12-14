@@ -48,8 +48,9 @@ $(document).ready(function(){
 
 	var trainsRef = firebase.database().ref('trains');
 	trainsRef.set ({
-		Trenton Express: {
+		Trenton: {
 			number: 1,
+			name: 'Trenton Express',
 			frequency: 25
 		},		
 		Oregon: {
