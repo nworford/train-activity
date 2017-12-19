@@ -90,7 +90,7 @@ $(document).ready(function(){
 	});
 */
 
-	console.log("Version 1.01c");
+	console.log("Version 1.02");
 });
 
 
