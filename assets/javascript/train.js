@@ -72,6 +72,13 @@ $(document).ready(function(){
 		frequency: 16,
 		first: 1734
 	});
+
+	trainsRef.push ({
+		name: "Kukamunga",
+		destination: "(IS that a real place?)",
+		frequency: 11,
+		first: 1234
+	});
 	
 /*
 	var trainsKey = trainsRef.key();
@@ -83,7 +90,7 @@ $(document).ready(function(){
 	});
 */
 
-	console.log("Version 1.01b");
+	console.log("Version 1.01c");
 });
 
 
