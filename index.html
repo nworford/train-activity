@@ -1,79 +1,119 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en-us">
-	<head>
-		<meta charset="UTF-8">
-	
-		<title> Train Scheduler</title>
+  <head>
+    <meta charset="UTF-8">
+    <title>Train Scheduler</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <!-- jquery & our scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="assets/javascript/train.js"></script>
+    <!-- Bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-database.js"></script>
+    <!-- Moment.js Reference -->
+    <!-- <script src="http://momentjs.com/downloads/moment.js"></script>   -->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <script>
+      // Initialize Firebase
+      /*
+      //need to set these rules for the "auth" part
+      // (multiple parts include auth & database separately)
+      //not sure if rules goes in config or if it's a firebase.auth() call
+      //or maybe set at firebase's website?
+      {
+        "rules": {
+          ".read": true,
+          ".write": true
+        }
+      }
+      */
 
-		<!-- Stylesheets -->
-		<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
-
-		<!-- Firebase -->
-		<script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
-		<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-app.js"></script>
-		<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-auth.js"></script>
-		<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-database.js"></script>
-		<script>
-			// Initialize Firebase
-			/*
-			//need to set these rules for the "auth" part
-			// (multiple parts include auth & database separately)
-			//not sure if rules goes in config or if it's a firebase.auth() call
-			//or maybe set at firebase's website?
-			{
-				"rules": {
-					".read": true,
-					".write": true
-				}
-			}
-			*/
-
-			var config = {
-				apiKey: "AIzaSyCr5O_t6pJtpvgXzFtHdTmoPcRKatLQjT0",
-				authDomain: "train-activity-393c0.firebaseapp.com",
-				databaseURL: "https://train-activity-393c0.firebaseio.com",
-				projectId: "train-activity-393c0",
-				storageBucket: "",
-				messagingSenderId: "210918617907"
-			};
-			firebase.initializeApp(config);
-		</script>
-
-		<!-- jquery & our scripts -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	 	<script src="assets/javascript/train.js"></script>
-	</head>
-	
-	<body>
-		
-		<div id="header">  
-			<h1>All Aboard!</h1>
-		</div> <!-- header -->
-	 
-	 	<div id="table">
-
-	 	</div>. <!-- header -->
-
-	 	<div id= "submit">
-			<input id="train-name"> Train Name
-
-			</input>
-
-			<input id="destination"> Destination
-			</input>
-
-			<input id="first-train-time">   First train time - (HH:mm - Military time)"
-			</input>
-
-			<input id="frequency"> Frequency (min)
-			</input>
-
-			<button>Submit</button>
-	 	</div> <!-- submit -->
-
-		<footer id="footer">  &copy; Copyright 2017 Nathan L. Worford
-		</footer>
-	</body>
-	
+      var config = {
+        apiKey: "AIzaSyCr5O_t6pJtpvgXzFtHdTmoPcRKatLQjT0",
+        authDomain: "train-activity-393c0.firebaseapp.com",
+        databaseURL: "https://train-activity-393c0.firebaseio.com",
+        projectId: "train-activity-393c0",
+        storageBucket: "",
+        messagingSenderId: "210918617907"
+      };
+      firebase.initializeApp(config);
+    </script>
+  </head>
+  
+  <body>
+    <!-- Train Scheduler -->
+    <div class="container">
+      <!-- Jumbotron -->
+      <div class="jumbotron" style="background-color: black; color: white">
+        <h1 class="text-center">ALL ABOARD!</h1>
+        <h3 class="text-center">Train Scheduler</h3>
+      </div> <!-- Jumbotron -->
+      <div class="row">
+        <div class="col-lg-12">
+        <!-- Train Scheduler-->
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title"><strong>Current Train Schedule</strong></h3>
+            </div>
+            <div class="panel-body">
+              <table class="table table-hover" id='schedule-table'>
+                <thead>
+                  <tr>
+                    <th>Train Name</th>
+                    <th>Destination</th>
+                    <th>Frequency (min)</th>
+                    <th>Next Arrival</th>
+                    <th>Minutes Away</th>
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <!-- Add Employee  -->
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title"><strong>Add Train</strong></h3>
+            </div>
+            <div class="panel-body">
+              <!-- Entry Form -->
+              <form>
+                <div class="form-group">
+                  <label for="employee-name-input">Train Name</label>
+                  <input class="form-control" id="train-name-input" type="text">
+                </div>
+                <div class="form-group">
+                  <label for="role-input">Destination</label>
+                  <input class="form-control" id="destination-input" type="text">
+                </div>
+                <div class="form-group">
+                  <label for="start-input">First Train Time (HH:mm - military time)</label>
+                  <input class="form-control" id="first-train-time-input" type="text">
+                </div>
+                <div class="form-group">
+                  <label for="rate-input">Frequency (min)</label>
+                  <input class="form-control" id="frequency-input" type="text">
+                </div>
+                <button class="btn btn-primary" id="add-train-btn" type="submit">Submit</button>
+              </form>
+            </div>
+          </div> <!-- Add Employee  -->
+        </div>
+      </div>
+    </div>
+    <!-- JavaScript -->
+    <!-- <script src="train.js"></script> -->
+    <footer id="footer" style="text-align:center">  &copy; Copyright 2017 Nathan L. Worford
+    </footer>
+  </body>
 </html>
