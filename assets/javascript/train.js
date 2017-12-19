@@ -83,7 +83,7 @@ $(document).ready(function(){
 	});
 */
 
-	console.log("Version 1.01a");
+	console.log("Version 1.01b");
 });
 
 
