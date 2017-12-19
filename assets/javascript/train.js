@@ -73,7 +73,7 @@ $(document).ready(function(){
 		first: 1735
 	});
 	
-
+/*
 	var trainsKey = trainsRef.key();
 	console.log(trainsKey);
 
@@ -81,8 +81,9 @@ $(document).ready(function(){
 	midnightRef.transaction(function(currentFrq) {
 		return currentFrz + 1;
 	});
+*/
 
-	console.log("Version 1.0");
+	console.log("Version 1.01");
 });
 
 
