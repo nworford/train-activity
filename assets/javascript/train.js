@@ -67,10 +67,10 @@ $(document).ready(function(){
 	//when the user pushes submit, make one of these
 	//(we will need trainsRef so that's from way up top)
 	trainsRef.push ({
-		name: "Midnight Carriage",
-		destination: "Philadelphia",
-		frequency: 15,
-		first: 1735
+		name: "Midnight Carriage2",
+		destination: "Philadelphia1",
+		frequency: 16,
+		first: 1734
 	});
 	
 /*
@@ -83,7 +83,7 @@ $(document).ready(function(){
 	});
 */
 
-	console.log("Version 1.01");
+	console.log("Version 1.01a");
 });
 
 
