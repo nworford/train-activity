@@ -96,9 +96,10 @@ $(document).ready(function(){
 	});
 
 	$("#add-train-btn").click(function() {
-
+		var train_name = $("#train-name-input").val();
+		console.log("Logging" + train_name);
 		trainsRef.push ({
-			name: $("#train-name-input").val();
+			name: train_name,
 			destination: "Philadelphia1",
 			frequency: 16,
 			first: 1734
@@ -115,7 +116,7 @@ $(document).ready(function(){
 */
 
 
-	console.log("Version 1.03");
+	console.log("Version 1.03a");
 });
 
 
