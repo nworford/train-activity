@@ -86,10 +86,11 @@ $(document).ready(function(){
 */
 	
 /*
+//not working
+var trainsKey = trainsRef.key();
+console.log(trainsKey);
 */
 	var trainsRef = firebase.database().ref('trains');
-	var trainsKey = trainsRef.key();
-	console.log(trainsKey);
 	trainsRef.on('value', function(snap)  {
 		console.log("SOMETHING HAPPENED");
 		trainsRef = snap.val();
@@ -116,7 +117,7 @@ $(document).ready(function(){
 */
 
 
-	console.log("Version 1.03a");
+	console.log("Version 1.03b");
 });
 
 
