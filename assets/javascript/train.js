@@ -67,18 +67,19 @@ $(document).ready(function(){
 	//when the user pushes submit, make one of these
 	//(we will need trainsRef so that's from way up top)
 	trainsRef.push ({
+		name: "Kukamunga",
+		destination: "(IS that a real place?)",
+		frequency: 11,
+		first: 1234
+	});
+
+	trainsRef.push ({
 		name: "Midnight Carriage2",
 		destination: "Philadelphia1",
 		frequency: 16,
 		first: 1734
 	});
 
-	trainsRef.push ({
-		name: "Kukamunga",
-		destination: "(IS that a real place?)",
-		frequency: 11,
-		first: 1234
-	});
 	
 /*
 	var trainsKey = trainsRef.key();
@@ -90,7 +91,7 @@ $(document).ready(function(){
 	});
 */
 
-	console.log("Version 1.02");
+	console.log("Version 1.02a");
 });
 
 
