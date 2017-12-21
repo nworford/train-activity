@@ -5,8 +5,8 @@ var trainsRef = 0;
 $(document).ready(function(){
 	var trainsRef = firebase.database().ref('trains');
 
+	//every time trainsRef changes, pull & repopulate train data
 	trainsRef.on('value', function(snap)  {
-		console.log("SOMETHING HAPPENED");
 		var result = snap.val();
 
 		var table_contents = "";
@@ -24,15 +24,19 @@ $(document).ready(function(){
 		$("#table_body").html(table_contents);
 	});
 
+	//adding a train will trigger a change to trainsRef, running the code ABOVE only AFTER what's below
 	$("#add-train-btn").click(function() {
 		var train_name = $("#train-name-input").val();
-		console.log("Logging " + train_name);
-		console.log(trainsRef);
+		var train_destination = $("#destination-input").val();
+		var train_frequency = $("#frequency-input").val();
+		var train_first = $("#first-train-time-input").val();
+		//console.log("Logging " + train_name);
+		//console.log(trainsRef);
 		trainsRef.push ({
 			name: train_name,
-			destination: "SOMEWHERER",
-			frequency: 16,
-			first: 1734
+			destination: train_destination,
+			frequency: train_frequency,
+			first: train_first
 		});
 
 	});
