@@ -1,5 +1,5 @@
 
-console.log("Version 1.04");
+console.log("Version 1.04a");
 var trainsRef = 0;
 
 $(document).ready(function(){
@@ -7,7 +7,8 @@ $(document).ready(function(){
 
 	trainsRef.on('value', function(snap)  {
 		console.log("SOMETHING HAPPENED");
-		trainsRef = snap.val();
+		var result = snap.val();
+		console.log(result);
 	});
 
 	$("#add-train-btn").click(function() {
@@ -16,7 +17,7 @@ $(document).ready(function(){
 		console.log(trainsRef);
 		trainsRef.push ({
 			name: train_name,
-			destination: "Philadelphia1",
+			destination: "SOMEWHERER",
 			frequency: 16,
 			first: 1734
 		});
