@@ -1,8 +1,10 @@
 
-console.log("Version 1.03d");
+console.log("Version 1.04");
+var trainsRef = 0;
 
 $(document).ready(function(){
 	var trainsRef = firebase.database().ref('trains');
+
 	trainsRef.on('value', function(snap)  {
 		console.log("SOMETHING HAPPENED");
 		trainsRef = snap.val();
@@ -10,7 +12,8 @@ $(document).ready(function(){
 
 	$("#add-train-btn").click(function() {
 		var train_name = $("#train-name-input").val();
-		console.log("Logging" + train_name);
+		console.log("Logging " + train_name);
+		console.log(trainsRef);
 		trainsRef.push ({
 			name: train_name,
 			destination: "Philadelphia1",
