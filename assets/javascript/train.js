@@ -1,5 +1,5 @@
 
-console.log("Version 1.04a");
+console.log("Version 1.04b");
 var trainsRef = 0;
 
 $(document).ready(function(){
@@ -8,6 +8,16 @@ $(document).ready(function(){
 	trainsRef.on('value', function(snap)  {
 		console.log("SOMETHING HAPPENED");
 		var result = snap.val();
+		for(var key in result) {
+			console.log("Key " + key);
+			var val = result[key];
+			console.log("VALUE: " + val);
+
+			for(var train in val)
+			{
+				console.log("TRAIN? " + train);
+			}
+		}
 		console.log(result);
 	});
 
