@@ -1,5 +1,5 @@
 
-console.log("Version 1.06");
+console.log("Version 1.07");
 var trainsRef = 0;
 
 $(document).ready(function(){
@@ -16,10 +16,41 @@ $(document).ready(function(){
 			console.log("VALUE: " + val);
 			var destination = val['destination'];
 			var first = val['first'];
-			var frequency = val['frequency'];
+			var first_hrs = parseInt(first/100);
+			var first_mins = first%100;
+			var frequency = parseInt(val['frequency']);
 			var name = val['name'];
+			var next_hrs = first_hrs;
+			var next_mins = first_mins;
+			var now = 1656;
+			var now_hrs = parseInt(now/100);
+			var now_mins = parseInt(now%100);
+			while(next_hrs*100+next_mins < now) //next train can't be before now, impossible.
+			{	
+				console.log("Advancing " + frequency);
+				console.log("Next " + next_hrs + ":" + next_mins);
+				next_mins += frequency;
+				console.log("Next mins: " + next_mins);
+				while(next_mins >= 60) //more than an hour from now, for example
+				{
+					next_hrs += 1;
+					next_mins -= 60;
+					console.log("Next " + next_hrs + ":" + next_mins);
+				}
+				while(next_hrs >= 24) //tomorrow, for example
+				{
+					next_hrs -= 24;
+					console.log("Next " + next_hrs + ":" + next_mins);
+				}
+			}
+			var minutes_away = 60*(next_hrs-now_hrs) + (next_mins-now_mins); //how far away?
+			console.log("Minutes way: " + minutes_away);
+			if(next_mins < 10)
+			{
+				next_mins = '0' + next_mins; //left fill zero
+			}
 			console.log("Train " + name + " going to " + destination + " from " + first + " every " + frequency + " minutes");
-			table_contents += "<tr><td>" + name + "</td><td>" + destination + "</td><td>" + first + "</td><td>" + frequency + "</td></tr>";
+			table_contents += "<tr><td>" + name + "</td><td>" + destination + "</td><td>" + frequency + "</td><td>" + next_hrs + ":" + next_mins + "</td><td>" + minutes_away + "</td></tr>";
 		}
 		$("#table_body").html(table_contents);
 	});
@@ -27,32 +58,48 @@ $(document).ready(function(){
 	//adding a train will trigger a change to trainsRef, running the code ABOVE only AFTER what's below
 	$("#add-train-btn").click(function() {
 		var train_name = $("#train-name-input").val();
+		$("#train-name-input").css("border-color", "lightgrey");
 		if(train_name == "")
 		{
-			alert("Please fill a train name!");
-			//$("#train-name-input").focus();
+			$("#train-name-input").focus();
+			$("#train-name-input").css("border-color", "orange");
 			return;
 		}
+
 		var train_destination = $("#destination-input").val();
+		$("#destination-input").css("border-color", "lightgrey");
 		if(train_destination == "")
 		{
-			alert("Please fill a train destination!");
+			$("#destination-input").focus();
+			$("#destination-input").css("border-color", "orange");
 			return;
 		}
-		var train_frequency = $("#frequency-input").val();
-		if(train_frequency == "" || train_frequency == 0)
-		{
-			alert("Please fill a frequency!");
-			return;			
-		}
+
 		var train_first = $("#first-train-time-input").val();
+		$("#first-train-time-input").css("border-color", "lightgrey");
 		if(train_first == "" || train_first == 0)
 		{
-			alert("Please fill a first train!");
+			$("#first-train-time-input").focus();
+			$("#first-train-time-input").css("border-color", "orange");
 			return;			
 		}
+
+		var train_frequency = $("#frequency-input").val();
+		$("#frequency-input").css("border-color", "lightgrey");
+		if(train_frequency == "" || train_frequency == 0)
+		{
+			$("#frequency-input").focus();
+			$("#frequency-input").css("border-color", "orange");
+			return;			
+		}
+		
 		//console.log("Logging " + train_name);
 		//console.log(trainsRef);
+		$("#train-name-input").val("");		
+		$("#destination-input").val("");
+		$("#first-train-time-input").val("");
+		$("#frequency-input").val("");
+
 		trainsRef.push ({
 			name: train_name,
 			destination: train_destination,
