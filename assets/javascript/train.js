@@ -1,5 +1,5 @@
 
-console.log("Version 1.04b");
+console.log("Version 1.05");
 var trainsRef = 0;
 
 $(document).ready(function(){
@@ -8,17 +8,20 @@ $(document).ready(function(){
 	trainsRef.on('value', function(snap)  {
 		console.log("SOMETHING HAPPENED");
 		var result = snap.val();
+
+		var table_contents = "";
 		for(var key in result) {
 			console.log("Key " + key);
 			var val = result[key];
 			console.log("VALUE: " + val);
-
-			for(var train in val)
-			{
-				console.log("TRAIN? " + train);
-			}
+			var destination = val['destination'];
+			var first = val['first'];
+			var frequency = val['frequency'];
+			var name = val['name'];
+			console.log("Train " + name + " going to " + destination + " from " + first + " every " + frequency + " minutes");
+			table_contents += "<tr><td>" + name + "</td><td>" + destination + "</td><td>" + first + "</td><td>" + frequency + "</td></tr>";
 		}
-		console.log(result);
+		$("#table_body").html(table_contents);
 	});
 
 	$("#add-train-btn").click(function() {
