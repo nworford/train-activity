@@ -1,5 +1,5 @@
 
-console.log("Version 1.05");
+console.log("Version 1.06");
 var trainsRef = 0;
 
 $(document).ready(function(){
@@ -27,9 +27,30 @@ $(document).ready(function(){
 	//adding a train will trigger a change to trainsRef, running the code ABOVE only AFTER what's below
 	$("#add-train-btn").click(function() {
 		var train_name = $("#train-name-input").val();
+		if(train_name == "")
+		{
+			alert("Please fill a train name!");
+			//$("#train-name-input").focus();
+			return;
+		}
 		var train_destination = $("#destination-input").val();
+		if(train_destination == "")
+		{
+			alert("Please fill a train destination!");
+			return;
+		}
 		var train_frequency = $("#frequency-input").val();
+		if(train_frequency == "" || train_frequency == 0)
+		{
+			alert("Please fill a frequency!");
+			return;			
+		}
 		var train_first = $("#first-train-time-input").val();
+		if(train_first == "" || train_first == 0)
+		{
+			alert("Please fill a first train!");
+			return;			
+		}
 		//console.log("Logging " + train_name);
 		//console.log(trainsRef);
 		trainsRef.push ({
