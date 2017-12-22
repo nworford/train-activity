@@ -22,9 +22,12 @@ $(document).ready(function(){
 			var name = val['name'];
 			var next_hrs = first_hrs;
 			var next_mins = first_mins;
-			var now = 1656;
-			var now_hrs = parseInt(now/100);
-			var now_mins = parseInt(now%100);
+			var date = new Date();
+
+			console.log("Time is " + now);
+			var now_hrs = parseInt(date.getHours());
+			var now_mins = parseInt(date.getMinutes());
+			var now = 100*now_hrs + now_mins;
 			while(next_hrs*100+next_mins < now) //next train can't be before now, impossible.
 			{	
 				console.log("Advancing " + frequency);
@@ -76,6 +79,15 @@ $(document).ready(function(){
 		}
 
 		var train_first = $("#first-train-time-input").val();
+		var clean_time = "";
+		for(var i=0;i<train_first.length;i++)
+		{
+			if(train_first[i] != ':')
+			{
+				clean_time += train_first[i];
+			}
+		}
+		train_first = clean_time;
 		$("#first-train-time-input").css("border-color", "lightgrey");
 		if(train_first == "" || train_first == 0)
 		{
@@ -92,7 +104,8 @@ $(document).ready(function(){
 			$("#frequency-input").css("border-color", "orange");
 			return;			
 		}
-		
+
+
 		//console.log("Logging " + train_name);
 		//console.log(trainsRef);
 		$("#train-name-input").val("");		
